@@ -437,4 +437,14 @@
             bottom: 0;
             background: transparent;
             z-index: 0;
+
+        }
+            .po-img {
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+            margin-left: 8px;
+            vertical-align: middle;
+           
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
         }
