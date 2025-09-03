@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Система переводов
             const translations = {
                 ru: {
-                    app_title: "Signal Bot",
+                    app_title: "Pocket AI",
                     select_instrument: "Выберите инструмент",
                     search_placeholder: "Поиск инструмента...",
                     select_model: "Модель",
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     uzbek: "O'zbek"
                 },
                 en: {
-                    app_title: "Signal Bot",
+                    app_title: "Pocket AI",
                     select_instrument: "Select instrument",
                     search_placeholder: "Search instrument...",
                     select_model: "Model",
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     uzbek: "Uzbek"
                 },
                 uz: {
-                    app_title: "Signal Bot",
+                    app_title: "Pocket AI",
                     select_instrument: "Instrumentni tanlang",
                     search_placeholder: "Instrumentni qidirish...",
                     select_model: "Model",
@@ -286,4 +286,5 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }, 2000); // Задержка в 2 секунды для имитации анализа
             });
+
         });
