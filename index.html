@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Pocket ai</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="tg-header"></div>
+    <div class="overlay" id="overlay"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1 data-translate="app_title">Signal Bot</h1>
+            
+            <div class="language-selector">
+                <button class="language-dropdown-btn" id="language-dropdown-btn">
+                    <div class="language-flag flag-ru"></div>
+                    <span>Русский</span>
+                </button>
+                <div class="language-dropdown-content" id="language-dropdown">
+                    <div class="language-option" data-lang="ru">
+                        <div class="language-flag flag-ru"></div>
+                        <span>Русский</span>
+                    </div>
+                    <div class="language-option" data-lang="en">
+                        <div class="language-flag flag-en"></div>
+                        <span>English</span>
+                    </div>
+                    <div class="language-option" data-lang="uz">
+                        <div class="language-flag flag-uz"></div>
+                        <span>O'zbek</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title" data-translate="select_instrument">Выберите инструмент</div>
+            
+            <div class="search-container">
+                <div class="search-icon">🔍</div>
+                <input type="text" class="search-input" id="instrument-search" data-placeholder="search_placeholder" placeholder="Поиск инструмента...">
+            </div>
+            
+            <div class="instruments-list" id="instruments-list">
+                <!-- Список инструментов будет сгенерирован JavaScript -->
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title" data-translate="select_model">Модель</div>
+            <div class="model-section">
+                <div class="model-option">
+                    <div class="model-checkbox selected" data-model="TASSA 2.0"></div>
+                    <div>
+                        <div class="model-name">TASSA 2.0</div>
+                        <div class="model-desc" data-translate="expiration_h4">Время экспирации H4</div>
+                    </div>
+                </div>
+                <div class="model-option">
+                    <div class="model-checkbox" data-model="Gold Tz"></div>
+                    <div>
+                        <div class="model-name">Gold Tz</div>
+                        <div class="model-desc">VHIBECTVL</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title" data-translate="expiration_time">Время экспирации</div>
+            <div class="time-section">
+                <div class="time-option selected" data-time="5" data-timeframe="s5">
+                    <div class="time-label" data-translate="5_seconds">5 секунд</div>
+                    <div class="timeframe-code">s5</div>
+                </div>
+                <div class="time-option" data-time="10" data-timeframe="s10">
+                    <div class="time-label" data-translate="10_seconds">10 секунд</div>
+                    <div class="timeframe-code">s10</div>
+                </div>
+                <div class="time-option" data-time="15" data-timeframe="s15">
+                    <div class="time-label" data-translate="15_seconds">15 секунд</div>
+                    <div class="timeframe-code">s15</div>
+                </div>
+                <div class="time-option" data-time="60" data-timeframe="m1">
+                    <div class="time-label" data-translate="1_minute">1 минута</div>
+                    <div class="timeframe-code">m1</div>
+                </div>
+                <div class="time-option" data-time="180" data-timeframe="m3">
+                    <div class="time-label" data-translate="3_minutes">3 минуты</div>
+                    <div class="timeframe-code">m3</div>
+                </div>
+                <div class="time-option" data-time="300" data-timeframe="m5">
+                    <div class="time-label" data-translate="5_minutes">5 минут</div>
+                    <div class="timeframe-code">m5</div>
+                </div>
+                <div class="time-option" data-time="600" data-timeframe="m10">
+                    <div class="time-label" data-translate="10_minutes">10 минут</div>
+                    <div class="timeframe-code">m10</div>
+                </div>
+            </div>
+        </div>
+        
+        <button class="action-btn" id="get-signal" data-translate="get_signal">Получить сигнал</button>
+        
+        <div class="result" id="result">
+            <div class="result-header" data-translate="signal">Сигнал</div>
+            
+            <div>
+                <span data-translate="model">Модель:</span>
+                <span class="model-badge">TASSA 2.0</span>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="signal signal-buy" id="signal-text">AUD/CAD OTC BUY</div>
+            
+            <div class="details">
+                <p id="timeframe" data-translate="timeframe">Таймфрейм: H4</p>
+                <p id="accuracy" data-translate="accuracy">Точность: 85%</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
