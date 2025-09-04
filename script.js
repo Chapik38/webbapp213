@@ -401,7 +401,7 @@ document.addEventListener('DOMContentLoaded', function() {
             };
             
             // Текущий язык
-            let currentLang = 'ru';
+            let currentLang = 'en';
             
             // Элементы DOM
             const languageDropdownBtn = document.getElementById('language-dropdown-btn');
@@ -422,45 +422,64 @@ document.addEventListener('DOMContentLoaded', function() {
             let selectedInstrument = "AUD/CAD OTC";
             
             // Функция перевода интерфейса
-            function translatePage(lang) {
-                currentLang = lang;
-                
-                // Обновляем все элементы с атрибутом data-translate
-                document.querySelectorAll('[data-translate]').forEach(element => {
-                    const key = element.getAttribute('data-translate');
-                    if (translations[lang][key]) {
-                        if (element.hasAttribute('data-placeholder')) {
-                            element.placeholder = translations[lang][key];
-                        } else {
-                            element.textContent = translations[lang][key];
-                        }
-                    }
-                });
-                
-                // Обновляем кнопку выбора языка
-                const flagClass = lang === 'ru' ? 'flag-ru' : (lang === 'en' ? 'flag-en' : 'flag-uz');
-                const languageName = translations[lang][lang === 'ru' ? 'russian' : (lang === 'en' ? 'english' : 'uzbek')];
-                
-                languageDropdownBtn.innerHTML = `
-                    <div class="language-flag ${flagClass}"></div>
-                    <span>${languageName}</span>
-                `;
-                
-                // Переводим кнопки времени
-                timeOptions.forEach(option => {
-                    const timeKey = option.querySelector('.time-label').getAttribute('data-translate');
-                    if (timeKey && translations[lang][timeKey]) {
-                        option.querySelector('.time-label').textContent = translations[lang][timeKey];
-                    }
-                });
-                
-                // Обновляем список инструментов при поиске
-                const searchText = searchInput.value.toLowerCase();
-                const filteredInstruments = allInstruments.filter(instrument => 
-                    instrument.toLowerCase().includes(searchText)
-                );
-                populateInstrumentsList(filteredInstruments);
+           function translatePage(lang) {
+    currentLang = lang;
+    
+    // Обновляем все элементы с атрибутом data-translate
+    document.querySelectorAll('[data-translate]').forEach(element => {
+        const key = element.getAttribute('data-translate');
+        if (translations[lang][key]) {
+            if (element.hasAttribute('data-placeholder')) {
+                element.placeholder = translations[lang][key];
+            } else {
+                element.textContent = translations[lang][key];
             }
+        }
+    });
+    
+    // Обновляем кнопку выбора языка
+    const flagClass = `flag-${lang}`;
+    let languageKey;
+    switch(lang) {
+        case 'ru': languageKey = 'russian'; break;
+        case 'en': languageKey = 'english'; break;
+        case 'uz': languageKey = 'uzbek'; break;
+        case 'de': languageKey = 'german'; break;
+        case 'fr': languageKey = 'french'; break;
+        case 'es': languageKey = 'spanish'; break;
+        case 'cn': languageKey = 'chinese'; break;
+        case 'tr': languageKey = 'turkish'; break;
+        case 'in': languageKey = 'hindi'; break;
+        case 'ae': languageKey = 'arabic'; break;
+        case 'kz': languageKey = 'kazakh'; break;
+        case 'br': languageKey = 'portuguese'; break;
+        case 'jp': languageKey = 'japanese'; break;
+        case 'kr': languageKey = 'korean'; break;
+        default: languageKey = 'english';
+    }
+    const languageName = translations[lang][languageKey];
+    
+    languageDropdownBtn.innerHTML = `
+        <div class="language-flag ${flagClass}"></div>
+        <span>${languageName}</span>
+    `;
+    
+    // Переводим кнопки времени
+    timeOptions.forEach(option => {
+        const timeKey = option.querySelector('.time-label').getAttribute('data-translate');
+        if (timeKey && translations[lang][timeKey]) {
+            option.querySelector('.time-label').textContent = translations[lang][timeKey];
+        }
+    });
+    
+    // Обновляем список инструментов при поиске
+    const searchText = searchInput.value.toLowerCase();
+    const filteredInstruments = allInstruments.filter(instrument => 
+        instrument.toLowerCase().includes(searchText)
+    );
+    populateInstrumentsList(filteredInstruments);
+}
+
             
             // Заполняем список инструментов
             function populateInstrumentsList(instruments) {
